@@ -1,0 +1,498 @@
+/* ==========================================================
+   ADMIN DASHBOARD — MODERN REDESIGN
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary:        #4f46e5;
+  --primary-dark:   #4338ca;
+  --primary-light:  #ede9fe;
+  --danger:         #ef4444;
+  --danger-dark:    #dc2626;
+  --success:        #22c55e;
+  --warning:        #f59e0b;
+
+  --sidebar-bg:     #1e1b4b;
+  --sidebar-text:   #c7d2fe;
+  --sidebar-hover:  #312e81;
+  --sidebar-active: #4f46e5;
+
+  --bg:             #f5f7ff;
+  --surface:        #ffffff;
+  --border:         #e5e7eb;
+  --border-focus:   #4f46e5;
+
+  --text-primary:   #111827;
+  --text-secondary: #6b7280;
+  --text-muted:     #9ca3af;
+
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06);
+  --shadow-lg:  0 10px 30px rgba(0,0,0,0.14);
+
+  --transition: all 0.18s ease;
+}
+
+/* ── Reset ────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Utility ───────────────────────────────────────────────── */
+.text-center { text-align: center; }
+
+/* ── Top navigation (MenuComponent) ───────────────────────── */
+
+.border-bottom {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 32px;
+  height: 60px;
+}
+
+/* Brand logo / app name area (float-left holds the nav list) */
+.border-bottom .float-left {
+  display: flex;
+  align-items: center;
+  float: none;
+  width: auto;
+  padding: 0;
+}
+
+/* Logout button holder (float-right in nav) */
+.border-bottom .float-right {
+  float: none;
+  width: auto;
+  background: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.border-bottom .float-right a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--danger);
+  color: #fff !important;
+  padding: 7px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.border-bottom .float-right a:hover {
+  background: var(--danger-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(239,68,68,0.35);
+}
+
+ul.menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+}
+
+li.menu a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+li.menu a:hover {
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+li.menu a.active {
+  color: var(--primary);
+  background: var(--primary-light);
+  font-weight: 600;
+}
+
+/* ── Page wrapper ──────────────────────────────────────────── */
+.body-admin {
+  min-height: calc(100vh - 60px);
+  background: var(--bg);
+}
+
+/* ── Content containers ────────────────────────────────────── */
+
+.align-center {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 28px 32px;
+}
+
+/* Two-pane layout: list (left) + detail (right) */
+.float-left {
+  float: left;
+  width: 58%;
+  padding: 28px 32px;
+}
+
+.float-right {
+  float: right;
+  width: 38%;
+  margin: 28px 2% 28px 0;
+  padding: 28px;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+}
+
+.float-clear { clear: both; }
+
+.inline {
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px;
+}
+
+/* ── Section headings ──────────────────────────────────────── */
+h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 20px 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--primary-light);
+  letter-spacing: -0.02em;
+}
+
+/* ── Data tables ───────────────────────────────────────────── */
+
+table.datatable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+}
+
+table.datatable th,
+table.datatable td {
+  padding: 11px 14px;
+  text-align: left;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+}
+
+table.datatable th {
+  background: var(--sidebar-bg);
+  color: #e0e7ff;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: none;
+}
+
+/* First header cell rounded top-left */
+table.datatable thead tr th:first-child,
+table.datatable tbody tr:first-child td:first-child {
+  border-top-left-radius: 0;
+}
+
+tbody tr.datatable {
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+tbody tr.datatable:hover {
+  background: var(--primary-light);
+}
+
+tbody tr.datatable:last-child td {
+  border-bottom: none;
+}
+
+/* Pagination row */
+table.datatable td[colspan] {
+  text-align: center;
+  padding: 12px;
+  background: #fafafa;
+  border-bottom: none;
+  font-size: 13px;
+}
+
+/* Pagination links */
+.link {
+  display: inline-block;
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.link:hover {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  text-decoration: none;
+}
+
+/* Status badges */
+td .badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── Detail panel forms ────────────────────────────────────── */
+
+form table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+form table td {
+  padding: 8px 6px;
+  vertical-align: middle;
+}
+
+form table td:first-child {
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-size: 13px;
+  white-space: nowrap;
+  padding-right: 14px;
+  width: 90px;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="number"],
+form input[type="email"],
+form select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-primary);
+  background: #fff;
+  outline: none;
+  transition: var(--transition);
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="number"]:focus,
+form input[type="email"]:focus,
+form select:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(79,70,229,0.15);
+}
+
+form input[type="text"]:disabled,
+form input[type="text"][readonly] {
+  background: #f9fafb;
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+form input[type="file"] {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+form input[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 9px 18px;
+  margin: 4px 6px 4px 0;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.01em;
+}
+
+form input[type="submit"]:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(79,70,229,0.3);
+}
+
+form input[type="submit"][value="DELETE"] {
+  background: var(--danger);
+}
+
+form input[type="submit"][value="DELETE"]:hover {
+  background: var(--danger-dark);
+  box-shadow: 0 4px 10px rgba(239,68,68,0.3);
+}
+
+form input[type="submit"][value="UPDATE"] {
+  background: var(--warning);
+  color: #fff;
+}
+
+form input[type="submit"][value="UPDATE"]:hover {
+  background: #d97706;
+  box-shadow: 0 4px 10px rgba(245,158,11,0.3);
+}
+
+/* ── Login page ────────────────────────────────────────────── */
+
+.align-valign-center {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(135deg, #4f46e5 0%, #1e1b4b 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative circles */
+.align-valign-center::before,
+.align-valign-center::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.12;
+  background: #fff;
+}
+
+.align-valign-center::before {
+  width: 400px;
+  height: 400px;
+  top: -120px;
+  right: -100px;
+}
+
+.align-valign-center::after {
+  width: 300px;
+  height: 300px;
+  bottom: -80px;
+  left: -80px;
+}
+
+.align-valign-center h2 {
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 28px;
+  border-bottom: none;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.align-valign-center form {
+  background: var(--surface);
+  padding: 36px 44px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  z-index: 1;
+  min-width: 360px;
+}
+
+.align-valign-center form table td:first-child {
+  width: 100px;
+}
+
+/* ── Home page hero image ──────────────────────────────────── */
+
+.align-center img[width="800px"] {
+  width: 100%;
+  max-width: 800px;
+  height: auto !important;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  display: block;
+  margin: 0 auto;
+}
+
+/* ── APPROVE / CANCEL action links in Order table ──────────── */
+td .link + .link {
+  margin-left: 6px;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+
+@media (max-width: 960px) {
+  .float-left {
+    width: 100%;
+    float: none;
+    padding: 20px 16px;
+  }
+
+  .float-right {
+    width: calc(100% - 32px);
+    float: none;
+    margin: 0 16px 24px;
+  }
+
+  .border-bottom {
+    padding: 0 16px;
+    flex-wrap: wrap;
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    gap: 10px;
+  }
+
+  ul.menu { flex-wrap: wrap; }
+
+  .align-center { padding: 20px 16px; }
+
+  .align-valign-center form {
+    min-width: unset;
+    width: 100%;
+    padding: 28px 24px;
+  }
+}
