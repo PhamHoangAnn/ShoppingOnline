@@ -1,0 +1,279 @@
+/* ==========================================================
+   ADMIN DASHBOARD STYLES
+   ========================================================== */
+
+:root {
+  --primary-color: #2563eb;
+  --primary-dark: #1d4ed8;
+  --danger-color: #ef4444;
+  --success-color: #16a34a;
+  --dark-color: #1e293b;
+  --light-bg: #f8fafc;
+  --border-color: #e2e8f0;
+  --text-main: #334155;
+  --text-muted: #64748b;
+  --transition: all 0.2s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-main);
+  background-color: var(--light-bg);
+}
+
+h2 {
+  font-weight: 700;
+  color: var(--dark-color);
+  margin: 20px 0 15px 0;
+}
+
+/* ---------- Utility classes used across admin components ---------- */
+
+.text-center {
+  text-align: center;
+}
+
+.align-center {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.align-valign-center {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+}
+
+.float-left {
+  float: left;
+  width: 58%;
+  padding: 20px;
+}
+
+.float-right {
+  float: right;
+  width: 38%;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin-top: 20px;
+  margin-right: 2%;
+}
+
+.float-clear {
+  clear: both;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.link {
+  color: var(--primary-color);
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: var(--transition);
+}
+
+.link:hover {
+  color: var(--primary-dark);
+}
+
+/* ---------- Top navigation menu ---------- */
+
+.border-bottom {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+ul.menu {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+li.menu a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  padding: 8px 4px;
+  border-bottom: 2px solid transparent;
+  transition: var(--transition);
+}
+
+li.menu a:hover,
+li.menu a.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+.border-bottom .float-right a {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: var(--danger-color);
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: var(--transition);
+  width: auto;
+  float: none;
+}
+
+.border-bottom .float-right a:hover {
+  background-color: #dc2626;
+}
+
+/* Main content area below the sticky menu */
+.body-admin {
+  padding: 20px 30px;
+}
+
+/* ---------- Data tables (category/product/order/customer lists) ---------- */
+
+table.datatable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+table.datatable th,
+table.datatable td {
+  border: 1px solid var(--border-color);
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 14px;
+}
+
+table.datatable th {
+  background-color: var(--dark-color);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+tr.datatable {
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+tbody tr.datatable:hover {
+  background-color: #eff6ff;
+}
+
+/* ---------- Forms (login + detail panels) ---------- */
+
+form table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+form table td {
+  padding: 10px 8px;
+  vertical-align: middle;
+}
+
+form input[type="text"],
+form input[type="password"],
+form select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: var(--transition);
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+form input[type="text"]:disabled {
+  background-color: #f1f5f9;
+  color: var(--text-muted);
+}
+
+form input[type="submit"] {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  padding: 8px 18px;
+  margin: 4px 6px 4px 0;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+form input[type="submit"]:hover {
+  background-color: var(--primary-dark);
+}
+
+form input[type="submit"][value="DELETE"] {
+  background-color: var(--danger-color);
+}
+
+form input[type="submit"][value="DELETE"]:hover {
+  background-color: #dc2626;
+}
+
+/* Login page card */
+.align-valign-center h2 {
+  color: #ffffff;
+  margin-bottom: 25px;
+}
+
+.align-valign-center form {
+  background: #ffffff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .float-left,
+  .float-right {
+    width: 100%;
+    float: none;
+  }
+
+  .border-bottom {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  ul.menu {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
