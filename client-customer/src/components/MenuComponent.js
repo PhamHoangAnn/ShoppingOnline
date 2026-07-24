@@ -51,7 +51,7 @@ class Menu extends Component {
                 <input
                     type="submit"
                     value="SEARCH"
-                    onClick={(e) => this.btnSearchClick(e)}
+                    onSubmit={(e) => this.btnSearchClick(e)}
                 />
             </form>
         </div>
